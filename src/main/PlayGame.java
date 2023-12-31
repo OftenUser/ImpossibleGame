@@ -512,7 +512,7 @@ public class PlayGame extends JFrame implements Runnable {
 
 					currentEnemy.dx = -enemySpeed;
 					currentEnemy.dy = 0;
-				} else if (currentEnemy.y < currentEnemy.minY){
+				} else if (currentEnemy.y < currentEnemy.minY) {
 					currentEnemy.y = currentEnemy.minY;
 
 					currentEnemy.dx = enemySpeed;
@@ -759,7 +759,7 @@ public class PlayGame extends JFrame implements Runnable {
 			mainMenuHovering = false;
 		}
 		
-		if (mouseX > resumeR.x && mouseX < resumeR.x + resumeR.width && mouseY > resumeR.y && mouseY < resumeR.y + resumeR.height){
+		if (mouseX > resumeR.x && mouseX < resumeR.x + resumeR.width && mouseY > resumeR.y && mouseY < resumeR.y + resumeR.height) {
 			resumeHovering = true;
 			
 			if (mouseClicked) {
@@ -934,8 +934,8 @@ public class PlayGame extends JFrame implements Runnable {
 					if (deathAnimation) {
 						if (alpha > 0.01)
 							alpha -= 0.01; // Draw half transparent
-						AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
-						((Graphics2D)g).setComposite(ac);
+						AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
+						((Graphics2D) g).setComposite(alphaComposite);
 						if (MainMenu.playerColor == 0)
 							g.drawImage(playerPic, player.x, player.y, player.width, player.height, null);
 						else if (MainMenu.playerColor == 1)
@@ -966,8 +966,8 @@ public class PlayGame extends JFrame implements Runnable {
 				if (deathAnimation) {
 					if (alpha > 0.01)
 						alpha -= 0.01; // Draw half transparent
-					AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alpha);
-					((Graphics2D)g).setComposite(ac);
+					AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alpha);
+					((Graphics2D) g).setComposite(alphaComposite);
 					g.setColor(Color.BLACK);
 					g.fillRect(player.x, player.y, player.width, player.height);
 					if (MainMenu.playerColor == 0) 
@@ -1028,8 +1028,8 @@ public class PlayGame extends JFrame implements Runnable {
 			drawString(g, PlayGame.transitionMessage, 30, 200, 900);
 		}
 		
-		AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
-		((Graphics2D)g).setComposite(ac);
+		AlphaComposite alphaComposite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
+		((Graphics2D)g).setComposite(alphaComposite);
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, getWidth(), 40);
 		
