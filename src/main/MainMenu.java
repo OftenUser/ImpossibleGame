@@ -24,7 +24,7 @@ public class MainMenu extends JFrame implements Runnable {
 	private MyRectangle player, startR, selectR, backR;
 	SpriteSheet spritesheet;
 	private Graphics doubleBufferGraphics;
-	private int SW, SH, mx, my;
+	private int SW, SH, mouseX, mouseY;
 	public static LevelStatus[][] levels = new LevelStatus[7][5];
 	public static int playerColor = 0;
 	
@@ -121,7 +121,7 @@ public class MainMenu extends JFrame implements Runnable {
 			e.printStackTrace();
 		}
 		
-		ss = new SpriteSheet(spriteSheet);
+		spritesheet = new SpriteSheet(spriteSheet);
 		
 		startNoHover = spritesheet.grabSprite(3, 225, 175, 135);
 		startHover = spritesheet.grabSprite(203, 225, 175, 135);
@@ -160,7 +160,7 @@ public class MainMenu extends JFrame implements Runnable {
 		player.x += player.dx;
 		player.y += player.dy;
 		
-		if (mx > player.x && mx < player.x + player.width && my > player.y && my < player.y + player.height && mouseClicked) {
+		if (mouseX > player.x && mouseX < player.x + player.width && mouseY > player.y && mouseY < player.y + player.height && mouseClicked) {
 			playerColor++;
 			mouseClicked = false;
 			
@@ -218,7 +218,7 @@ public class MainMenu extends JFrame implements Runnable {
 			player.dy *= -1;
 		}
 		
-		if (mx > startR.x && mx < startR.x + startR.width && my > startR.y && my < startR.y + startR.height && !drawLevels) {
+		if (mouseX > startR.x && mouseX < startR.x + startR.width && mouseY > startR.y && mouseY < startR.y + startR.height && !drawLevels) {
 			mouseOverStart = true;
 			
 			if (mouseClicked) {
@@ -240,7 +240,7 @@ public class MainMenu extends JFrame implements Runnable {
 		} else 
 			mouseOverStart = false;
 		
-		if (mx > selectR.x && mx < selectR.x + selectR.width && my > selectR.y && my < selectR.y + selectR.height && !drawLevels) {
+		if (mouseX > selectR.x && mouseX < selectR.x + selectR.width && mouseX > selectR.y && mouseY < selectR.y + selectR.height && !drawLevels) {
 			mouseOverSelect = true;
 			
 			if (mouseClicked) {
