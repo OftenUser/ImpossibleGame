@@ -6,7 +6,7 @@ public class Main {
 	static GameState stateManager = new GameState();
 	
 	public static void init() {
-		if(playGame) {
+		if (playGame) {
 			stateManager.setState(1);
 		} else if (drawMenu) {
 			stateManager.setState(0);
