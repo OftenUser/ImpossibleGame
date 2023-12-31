@@ -2,7 +2,7 @@ package main;
 
 public class GetLevelMap2 {
 	
-	public static int[][] getLevel2(int id) {
+	public static int[][] getLevelMap2(int id) {
 		
 		switch(id) {
 			case 20:
