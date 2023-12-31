@@ -24,14 +24,16 @@ public class Particle {
 	public boolean update() {
 		x += dx;
 		
-		if(y > initialY - randomY)
+		if (y > initialY - randomY)
 			y += dy;
 		else 
 			y += gravity;
 		
 		life--;
-		if(life <= 0)
+		
+		if (life <= 0)
 			return true;
+		
 		return false;
 	}
 }
