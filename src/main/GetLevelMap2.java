@@ -1,12 +1,12 @@
 package main;
 
-public class GetLevelMapTwo {
+public class GetLevelMap2 {
 	
-	public static int[][] getLevelTwo(int id) {
+	public static int[][] getLevel2(int id) {
 		
 		switch(id) {
-		case 20:
-			int[][] map20 = {
+			case 20:
+				int[][] map20 = {
 					{3,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,11},
 					{10,4,4,4,4,4,4,4,9,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{10,4,9,9,9,9,9,1,101,2,9,9,9,9,9,4,4,4,4,4,4,4,4,4,19},
@@ -27,9 +27,11 @@ public class GetLevelMapTwo {
 					{10,19,5,5,5,5,10,4,4,4,19,5,5,5,10,4,4,4,4,4,4,4,4,4,19},
 					{10,4,18,18,18,18,4,4,4,4,4,18,18,18,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
-			};
-			PlayGame.transitionMessage = "All I can say is ...";
+				};
+				
+			PlayGame.transitionMessage = "All I can say is...";
 			PlayGame.transitionTime = 2;
+			
 			return map20;
 			
 		case 21:
@@ -55,8 +57,10 @@ public class GetLevelMapTwo {
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,18,18,18,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
 			};
+				
 			PlayGame.transitionMessage = "";
 			PlayGame.transitionTime = 0;
+				
 			return map21;
 			
 		case 22:
@@ -82,8 +86,10 @@ public class GetLevelMapTwo {
 				{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,18,18,18,4,4,4,4,4,19},
 				{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
 			};
+				
 			PlayGame.transitionMessage = "That really sucked :)";
 			PlayGame.transitionTime = 1;
+				
 			return map22;
 		
 		case 23:
@@ -109,8 +115,10 @@ public class GetLevelMapTwo {
 					{10,4,4,4,18,18,18,4,4,4,4,4,4,4,4,4,18,18,18,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
 			};
+				
 			PlayGame.transitionMessage = "";
 			PlayGame.transitionTime = 0;
+				
 			return map23;
 			
 		case 24:
@@ -135,10 +143,11 @@ public class GetLevelMapTwo {
 					{10,4,4,19,5,5,5,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{10,4,4,4,18,18,18,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
-
 			};
+				
 			PlayGame.transitionMessage = "Don't say I never give you kind things.";
 			PlayGame.transitionTime = 2;
+				
 			return map24;
 			
 		case 25:
@@ -164,8 +173,10 @@ public class GetLevelMapTwo {
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
 			};
+				
 			PlayGame.transitionMessage = "Wow, that was a blast from the past.";
 			PlayGame.transitionTime = 1;
+				
 			return map25;
 			
 		case 26:
@@ -191,8 +202,10 @@ public class GetLevelMapTwo {
 				{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 				{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
 			};
+				
 			PlayGame.transitionMessage = "";
 			PlayGame.transitionTime = 0;
+				
 			return map26;
 			
 		case 27:
@@ -218,8 +231,10 @@ public class GetLevelMapTwo {
 					{10,4,19,21,13,21,13,21,13,21,13,21,13,21,13,21,13,21,13,21,8,5,5,10,19},
 					{2,9,9,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,9,1}
 			};
+				
 			PlayGame.transitionMessage = "";
 			PlayGame.transitionTime = 0;
+				
 			return map27;
 			
 		case 28:
@@ -245,8 +260,10 @@ public class GetLevelMapTwo {
 					{10,4,4,4,18,18,18,4,4,4,4,4,4,4,4,4,18,18,18,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
 			};
+				
 			PlayGame.transitionMessage = "";
 			PlayGame.transitionTime = 0;
+				
 			return map28;
 			
 		case 29:
@@ -271,11 +288,11 @@ public class GetLevelMapTwo {
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
-
-
-			    		   };
-			PlayGame.transitionMessage = "Sorry I got bored, the rest of the levels are all just level one.";
+			};
+				
+			PlayGame.transitionMessage = "Sorry, I got bored, the rest of the levels are all just Level 1.";
 			PlayGame.transitionTime = 3;
+				
 			return map29;
 			
 		case 30:
@@ -300,11 +317,11 @@ public class GetLevelMapTwo {
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
-
-
-			    		   };
-			PlayGame.transitionMessage = "Six more levels.";
+			};
+				
+			PlayGame.transitionMessage = "6 more levels...";
 			PlayGame.transitionTime = 3;
+				
 			return map30;
 			
 		case 31:
@@ -329,11 +346,11 @@ public class GetLevelMapTwo {
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
-
-
-			    		   };
-			PlayGame.transitionMessage = "Five more levels.";
+			};
+				
+			PlayGame.transitionMessage = "5 more levels...";
 			PlayGame.transitionTime = 3;
+				
 			return map31;
 			
 		case 32:
@@ -358,11 +375,11 @@ public class GetLevelMapTwo {
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
-
-
-			    		   };
-			PlayGame.transitionMessage = "Four more levels.";
+			};
+				
+			PlayGame.transitionMessage = "4 more levels...";
 			PlayGame.transitionTime = 3;
+				
 			return map32;
 			
 		case 33:
@@ -387,11 +404,11 @@ public class GetLevelMapTwo {
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
-
-
-			    		   };
-			PlayGame.transitionMessage = "Three more levels.";
+			};
+				
+			PlayGame.transitionMessage = "3 more levels...";
 			PlayGame.transitionTime = 3;
+				
 			return map33;
 			
 		case 34:
@@ -418,9 +435,11 @@ public class GetLevelMapTwo {
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
 
 
-			    		   };
-			PlayGame.transitionMessage = "Two more levels.";
+			};
+				
+			PlayGame.transitionMessage = "2 more levels...";
 			PlayGame.transitionTime = 3;
+				
 			return map34;
 			
 		case 35:
@@ -445,11 +464,11 @@ public class GetLevelMapTwo {
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,19},
 					{2,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1}
-
-
-			    		   };
-			PlayGame.transitionMessage = "Umm I guess you won, congrats!";
+			};
+				
+			PlayGame.transitionMessage = "Um, I guess you won, congrats!";
 			PlayGame.transitionTime = 3;
+				
 			return map35;
 		}
 		
@@ -457,11 +476,11 @@ public class GetLevelMapTwo {
 		return emptyMap;
 	}
 	
-	public static int[][] getLevelObjectsTwo(int id) {
+	public static int[][] getLevelObjects2(int id) {
 		switch(id) {
 			
-		case 20:
-			int[][] map20Objects = {
+			case 20:
+				int[][] map20Objects = {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -482,9 +501,11 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-			};
-			PlayGame.enemySpeed = 2;
-			return map20Objects;
+				};
+				
+				PlayGame.enemySpeed = 2;
+				
+				return map20Objects;
 			
 		case 21:
 			int[][] map21Objects = {
@@ -509,6 +530,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map21Objects;
 			
 		case 22:
@@ -534,6 +556,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map22Objects;
 			
 		case 23:
@@ -559,6 +582,7 @@ public class GetLevelMapTwo {
 				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map23Objects;
 			
 		case 24:
@@ -584,6 +608,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map24Objects;
 			
 		case 25:
@@ -609,7 +634,9 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			PlayGame.enemySpeed = 8;
+				
 			return map25Objects;
 			
 		case 26:
@@ -635,6 +662,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map26Objects;
 			
 		case 27:
@@ -660,6 +688,7 @@ public class GetLevelMapTwo {
 					{0,0,0,25,76,0,0,0,0,0,0,0,0,0,0,75,92,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map27Objects;
 			
 		case 28:
@@ -685,6 +714,7 @@ public class GetLevelMapTwo {
 				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map28Objects;
 			
 		case 29:
@@ -710,6 +740,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map29Objects;
 			
 		case 30:
@@ -735,6 +766,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map30Objects;
 			
 		case 31:
@@ -760,6 +792,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map31Objects;
 			
 		case 32:
@@ -785,6 +818,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map32Objects;
 			
 		case 33:
@@ -810,6 +844,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map33Objects;
 			
 		case 34:
@@ -835,6 +870,7 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map34Objects;
 			
 		case 35:
@@ -860,14 +896,15 @@ public class GetLevelMapTwo {
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 			};
+				
 			return map35Objects;
 			
 		default:
 			int[][] emptyMap = {
-					{12}
+				{12}
 			};
+				
 			return emptyMap;
 		}
-		
 	}
 }
