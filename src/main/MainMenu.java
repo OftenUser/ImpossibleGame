@@ -257,7 +257,7 @@ public class MainMenu extends JFrame implements Runnable {
 					LevelStatus cl = levels[i][j];
 					
 					if (cl.unlocked) {
-						if (mx > cl.x && mx < cl.x + cl.width && my > cl.y && my < cl.y + cl.height) {
+						if (mouseX > cl.x && mouseX < cl.x + cl.width && mouseY > cl.y && mouseY < cl.y + cl.height) {
 							cl.mouseOver = true;
 							
 							if (mouseClicked) {
@@ -289,7 +289,7 @@ public class MainMenu extends JFrame implements Runnable {
 				}
 			}
 			
-			if (mx > backR.x && mx < backR.x + backR.width && my > backR.y && my < backR.y + backR.height) {
+			if (mouseX > backR.x && mouseX < backR.x + backR.width && mouseY > backR.y && mouseY < backR.y + backR.height) {
 				backArrowHovering = true;
 				
 				if (mouseClicked)  {
@@ -305,7 +305,7 @@ public class MainMenu extends JFrame implements Runnable {
 	public void paint(Graphics g) {
 		doubleBufferImage = createImage(getWidth(), getHeight());
 		doubleBufferGraphics = doubleBufferImage.getGraphics();
-		paintComponent(dbg);
+		paintComponent(doubleBufferGraphics);
 		g.drawImage(doubleBufferImage, 0, 0, this);
 	}
 	
@@ -416,133 +416,133 @@ public class MainMenu extends JFrame implements Runnable {
 							break;
 						
 						case 10: 
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberZero, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number0, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 11:
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberOne, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 12:
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberTwo, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 13: 
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberThree, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 14:
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberFour, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number4, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 15:
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberFive, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number5, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 16:
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberSix, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number6, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 17:
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberSeven, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number7, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 18:
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberEight, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number8, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 					
 						case 19:
-							g.drawImage(numberOne, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberNine, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number9, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 20:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberZero, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number0, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 21:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberOne, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 22:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberTwo, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 23:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberThree, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 24:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberFour, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number4, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 25:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberFive, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number5, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 26:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberSix, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number6, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 27:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberSeven, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number7, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 28:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberEight, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number8, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 29:
-							g.drawImage(numberTwo, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberNine, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number9, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number9, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 30:
-							g.drawImage(numberThree, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberZero, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number0, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 31:
-							g.drawImage(numberThree, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberOne, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number1, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 32:
-							g.drawImage(numberThree, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberTwo, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number2, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 33:
-							g.drawImage(numberThree, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberThree, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 34:
-							g.drawImage(numberThree, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberFour, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number4, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 						
 						case 35:
-							g.drawImage(numberThree, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
-							g.drawImage(numberFive, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number3, levels[i][j].x + 12, levels[i][j].y + 15, 20, 32, null);
+							g.drawImage(number5, levels[i][j].x + 32, levels[i][j].y + 15, 20, 32, null);
 							break;
 					}
 					
@@ -563,12 +563,12 @@ public class MainMenu extends JFrame implements Runnable {
 	
 	public void run() {
 		try {
-			while(isRunning) {
+			while (isRunning) {
 				move();
 				
 				Thread.sleep(30);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
