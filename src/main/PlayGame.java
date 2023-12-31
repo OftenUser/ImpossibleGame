@@ -108,19 +108,25 @@ public class PlayGame extends JFrame implements Runnable {
 			for (int j = 0; j < levelObjects[i].length; j++) {	
 				if (levelObjects[i][j] == 12) {
 					player = new MyRectangle(30, 30, j * 40, i *40);
+					
 					initialX = player.x;
 					initialY = player.y;
+					
 					player.i = i;
 					player.j = j;
 				}
 				
 				if (levelObjects[i][j] == 20) {
 					foodCount++;
+					
 					int x = (j * 40) + 10;
 					int y = (i * 40) + 10;
+					
 					MyRectangle currentFood = new MyRectangle(20, 20, x, y);
+					
 					currentFood.i = i;
 					currentFood.j = j;
+					
 					foodObjects.add(currentFood);
 				}
 				
@@ -131,18 +137,23 @@ public class PlayGame extends JFrame implements Runnable {
 					int y = (i * 40) + 10;
 					
 					MyRectangle enemyP = new MyRectangle(10, 10, x, y);
-					enemyP.dy = 0;
+
 					enemyP.dx = enemySpeed + 1;
+					enemyP.dy = 0;
+					
 					enemyP.minX = enemyP.x;
 					enemyP.maxX = enemyP.x + (40 * 11);
+					
 					enemyP.id = 20;
+					
 					enemies.add(enemyP);
 				}
 				
 				// Enemy moving up				
 				if (levelObjects[i][j] >= 25 && (levelObjects[i][j] - 25) % 8 == 0) {
-					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
+					int y = (i * 40) + 10;
+					
 					int multiplyFactor = 0;
 					
 					if (levelObjects[i][j] == 25)
@@ -151,10 +162,14 @@ public class PlayGame extends JFrame implements Runnable {
 						multiplyFactor = 11 - ((levelObjects[i][j] - 25) / 8);
 					
 					MyRectangle enemyP = new MyRectangle(10, 10, x, y);
+					
 					enemyP.dy = -enemySpeed;
+					
 					enemyP.minY = enemyP.y - (40 * multiplyFactor);
 					enemyP.maxY = enemyP.y;
+					
 					enemyP.id = 1;
+					
 					enemies.add(enemyP);
 				}				
 				
@@ -163,6 +178,7 @@ public class PlayGame extends JFrame implements Runnable {
 				if (levelObjects[i][j] >= 26 && (levelObjects[i][j] - 26) % 8 == 0) {
 					int x = (j * 40) + 10;
 					int y = (i * 40) + 10;
+					
 					int multiplyFactor = 0;
 					
 					if (levelObjects[i][j] == 26)
@@ -171,10 +187,14 @@ public class PlayGame extends JFrame implements Runnable {
 						multiplyFactor = 11 - ((levelObjects[i][j] - 26) / 8);
 					
 					MyRectangle enemyP = new MyRectangle(10, 10, x, y);
+					
 					enemyP.id = 1;
+					
 					enemyP.dy = -enemySpeed;
-					enemyP.maxY = enemyP.y + (40 * multiplyFactor);
+					
 					enemyP.minY = enemyP.y;
+					enemyP.maxY = enemyP.y + (40 * multiplyFactor);
+					
 					enemies.add(enemyP);
 				}
 				
@@ -182,6 +202,7 @@ public class PlayGame extends JFrame implements Runnable {
 				if (levelObjects[i][j] >= 27 && (levelObjects[i][j] - 27) % 8 == 0) {
 					int x = (j * 40) + 10;
 					int y = (i * 40) + 10;
+					
 					int multiplyFactor = 0;
 					
 					if (levelObjects[i][j] == 27)
@@ -201,6 +222,7 @@ public class PlayGame extends JFrame implements Runnable {
 				if (levelObjects[i][j] >= 28 && (levelObjects[i][j] - 28) % 8 == 0) {
 					int x = (j * 40) + 10;
 					int y = (i * 40) + 10;
+					
 					int multiplyFactor = 0;
 					
 					if (levelObjects[i][j] == 28)
@@ -220,6 +242,7 @@ public class PlayGame extends JFrame implements Runnable {
 				if (levelObjects[i][j] >= 29 && (levelObjects[i][j] - 29) % 8 == 0) {
 					int x = (j * 40) + 10;
 					int y = (i * 40) + 10;
+					
 					int multiplyFactor = 0;
 					
 					if (levelObjects[i][j] == 29)
@@ -228,13 +251,18 @@ public class PlayGame extends JFrame implements Runnable {
 						multiplyFactor = 11 - ((levelObjects[i][j] - 29) / 8);
 					
 					MyRectangle enemyP = new MyRectangle(10, 10, x, y);
+					
 					enemyP.id = 3;
+					
 					enemyP.dx = 0;
 					enemyP.dy = -enemySpeed;
-					enemyP.maxY = enemyP.y + (40 * multiplyFactor);
-					enemyP.minY = enemyP.y;
-					enemyP.maxX = enemyP.x + (40 * multiplyFactor);
+
 					enemyP.minX = enemyP.x;
+					enemyP.maxX = enemyP.x + (40 * multiplyFactor);
+
+					enemyP.minY = enemyP.y;
+					enemyP.maxY = enemyP.y + (40 * multiplyFactor);
+					
 					enemies.add(enemyP);
 				}
 				
@@ -242,9 +270,12 @@ public class PlayGame extends JFrame implements Runnable {
 				if (levelObjects[i][j] == 30) {
 					int x = (j * 40) + 10;
 					int y = (i * 40) + 10;
+					
 					MyRectangle enemyP = new MyRectangle(10, 10, x, y);
-					enemyP.dy = 0;
+
 					enemyP.dx = 0;
+					enemyP.dy = 0;
+					
 					enemies.add(enemyP);
 				}
 			}
@@ -259,16 +290,16 @@ public class PlayGame extends JFrame implements Runnable {
 						ground.add(otherNewPiece0);
 						break;
 					case 2:
-						MyRectangle OtherNewPiece1 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(OtherNewPiece1);
+						MyRectangle otherNewPiece1 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(otherNewPiece1);
 						break;
 					case 3:
-						MyRectangle OtherNewPiece2 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(OtherNewPiece2);
+						MyRectangle otherNewPiece2 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(otherNewPiece2);
 						break;
 					case 6:
-						MyRectangle piece = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(piece);
+						MyRectangle piece0 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(piece0);
 						break;
 					case 7:
 						MyRectangle piece1 = new MyRectangle(40, 40, j * 40, i * 40);
