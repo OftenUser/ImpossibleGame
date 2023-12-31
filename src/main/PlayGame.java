@@ -36,7 +36,7 @@ public class PlayGame extends JFrame implements Runnable {
 	private Image topRightCorner, topLeftCorner, topPiece, bottomPiece, rightPiece, leftPiece, allPiece, 
 	bottomRightCorner, bottomLeftCorner, verticalSides, horizontalSides, lightBlue, whitePiece, noSides, greenPiece,
 	rightEnd, bottomEnd, leftEnd, topEnd, playerPic, food, enemy, mainMenuPicture, resumePicture, mainMenuHover, resumeHover, pauseBackground, background,
-	playerColorOne, playerColorTwo, playerColorThree, playerColorFour;
+	playerColor1, playerColor2, playerColor3, playerColor4;
 	private MyRectangle player, winSquare, resumeR, mainMenuR, checkpoint;
 	private ArrayList<MyRectangle> ground = new ArrayList<MyRectangle>();
 	private ArrayList<MyRectangle> enemies = new ArrayList<MyRectangle>();
@@ -45,7 +45,7 @@ public class PlayGame extends JFrame implements Runnable {
 	public static int enemySpeed = 7;
 	public static int transitionTime;
 	public static String transitionMessage;
-	private int initialX, initialY, foodCount, mx, my;
+	private int initialX, initialY, foodCount, mouseX, mouseY;
 	private int countdownNumber = 4;
 	private float alpha;
 	private boolean schylersException = false;
@@ -66,27 +66,25 @@ public class PlayGame extends JFrame implements Runnable {
 	private File wkdir = null;
 
 	public PlayGame(int width, int height, String title) {
-		setSize(width, height);
-		setTitle(title);
-		setResizable(false);
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(width, height);
+		this.setTitle(title);
+		this.setResizable(false);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		isRunning = true;
-		addKeyListener(new AL());
-		addMouseListener(new ML());
-		addMouseMotionListener(new ML());
+		this.addKeyListener(new AL());
+		this.addMouseListener(new ML());
+		this.addMouseMotionListener(new ML());
 		System.out.println(currentLevel + " CURRENT LEVEL");
 		foodCount = 0;
 		
-		if(System.getProperty("os.name").toLowerCase().contains("linux")) {
+		if (System.getProperty("os.name").toLowerCase().contains("linux")) {
 			file = new File(System.getProperty("user.home") + "/impossibleGame/userData.txt");
 			wkdir = new File(System.getProperty("user.home") + "/impossibleGame");
-		}
-		else if(System.getProperty("os.name").toLowerCase().contains("windows")) {
+		} else if (System.getProperty("os.name").toLowerCase().contains("windows")) {
 			file = new File(System.getProperty("user.home") + File.separator + "impossibleGame" + File.separator + "userData.txt");
 			wkdir = new File(System.getProperty("user.home") + File.separator + "impossibleGame");
-		}
-		else if(System.getProperty("os.name").toLowerCase().contains("mac os")) {
+		} else if (System.getProperty("os.name").toLowerCase().contains("mac os")) {
 			file = new File(System.getProperty("user.home") + File.separator + "impossibleGame" + File.separator + "userData.txt");
 			wkdir = new File(System.getProperty("user.home") + File.separator + "impossibleGame");
 		}
@@ -99,15 +97,15 @@ public class PlayGame extends JFrame implements Runnable {
 			e.printStackTrace();
 		}
 		
-		for(int i=0; i < dataFile.size(); i++) {
+		for (int i = 0; i < dataFile.size(); i++) {
 			String[] truth = dataFile.get(i).split("=");
-			if(truth[0].equals("deaths"))
+			if (truth[0].equals("deaths"))
 				deaths = Integer.parseInt(truth[1]);
 		}
 
-		for(int i=0; i < levelObjects.length; i++) {
-			for(int j=0; j < levelObjects[i].length; j++) {	
-				if(levelObjects[i][j] == 12) {
+		for (int i = 0; i < levelObjects.length; i++) {
+			for (int j = 0; j < levelObjects[i].length; j++) {	
+				if (levelObjects[i][j] == 12) {
 					player = new MyRectangle(30, 30, j * 40, i *40);
 					initialX = player.x;
 					initialY = player.y;
@@ -115,10 +113,10 @@ public class PlayGame extends JFrame implements Runnable {
 					player.j = j;
 				}
 				
-				if(levelObjects[i][j] == 20) {
+				if (levelObjects[i][j] == 20) {
 					foodCount++;
-					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
+					int y = (i * 40) + 10;
 					MyRectangle currentFood = new MyRectangle(20, 20, x, y);
 					currentFood.i = i;
 					currentFood.j = j;
@@ -126,10 +124,10 @@ public class PlayGame extends JFrame implements Runnable {
 				}
 				
 				
-				//Special Enemy
-				if(levelObjects[i][j] == 102) {
-					int y = (i * 40) + 10;
+				// Special enemy
+				if (levelObjects[i][j] == 102) {
 					int x = (j * 40) + 10;
+					int y = (i * 40) + 10;
 					
 					MyRectangle enemyP = new MyRectangle(10, 10, x, y);
 					enemyP.dy = 0;
@@ -140,7 +138,7 @@ public class PlayGame extends JFrame implements Runnable {
 					enemies.add(enemyP);
 				}
 				
-				//Enemy moving up				
+				// Enemy moving up				
 				if(levelObjects[i][j] >= 25 && (levelObjects[i][j] - 25) % 8 == 0) {
 					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
@@ -160,7 +158,7 @@ public class PlayGame extends JFrame implements Runnable {
 				}				
 				
 				
-				//Enemy moving down
+				// Enemy moving down
 				if(levelObjects[i][j] >= 26 && (levelObjects[i][j] - 26) % 8 == 0) {
 					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
@@ -179,7 +177,7 @@ public class PlayGame extends JFrame implements Runnable {
 					enemies.add(enemyP);
 				}
 				
-				//Enemy moving left
+				// Enemy moving left
 				if(levelObjects[i][j] >= 27 && (levelObjects[i][j] - 27) % 8 == 0) {
 					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
@@ -198,7 +196,7 @@ public class PlayGame extends JFrame implements Runnable {
 					enemies.add(enemyP);
 				}
 					
-				//Enemy moving right
+				// Enemy moving right
 				if(levelObjects[i][j] >= 28 && (levelObjects[i][j] - 28) % 8 == 0) {
 					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
@@ -217,7 +215,7 @@ public class PlayGame extends JFrame implements Runnable {
 					enemies.add(enemyP);
 				}
 				
-				//Enemy moving in a square of certain radius
+				// Enemy moving in a square of certain radius
 				if(levelObjects[i][j] >= 29 && (levelObjects[i][j] - 29) % 8 == 0) {
 					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
@@ -239,7 +237,7 @@ public class PlayGame extends JFrame implements Runnable {
 					enemies.add(enemyP);
 				}
 				
-				//Stationary enemy
+				// Stationary enemy
 				if(levelObjects[i][j] == 30) {
 					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
