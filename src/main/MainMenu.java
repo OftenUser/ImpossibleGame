@@ -24,7 +24,7 @@ public class MainMenu extends JFrame implements Runnable {
 	private MyRectangle player, startR, selectR, backR;
 	SpriteSheet spritesheet;
 	private Graphics doubleBufferGraphics;
-	private int SW, SH, mouseX, mouseY;
+	private int screenWidth, screenHeight, mouseX, mouseY;
 	public static LevelStatus[][] levels = new LevelStatus[7][5];
 	public static int playerColor = 0;
 	
@@ -53,8 +53,8 @@ public class MainMenu extends JFrame implements Runnable {
 		player.dx = 5;
 		player.dy = 3;
 		
-		SW = width; 
-		SH = height;
+		screenWidth = width; 
+		screenHeight = height;
 		
 		drawMenu = true;
 		
@@ -202,16 +202,16 @@ public class MainMenu extends JFrame implements Runnable {
 				doParticleEffect = false;
 		}
 		
-		if (player.x + player.width > SW) {
-			player.x = SW - player.width;
+		if (player.x + player.width > screenWidth) {
+			player.x = screenWidth - player.width;
 			player.dx = -player.dx;
 		} else if (player.x < 0) {
 			player.x = 0;
 			player.dx = -player.dx;
 		}
 		
-		if (player.y > SH - player.height) {
-			player.y = SH - player.height;
+		if (player.y > screenHeight - player.height) {
+			player.y = screenHeight - player.height;
 			player.dy = -player.dy;
 		} else if (player.y < 0) {
 			player.y = 0;
@@ -232,10 +232,10 @@ public class MainMenu extends JFrame implements Runnable {
 				Main.drawMenu = false;
 				Main.init();
 				
-				setVisible(false);
+				this.setVisible(false);
 				isRunning = false;
 				
-				dispose();
+				this.dispose();
 			}
 		} else 
 			mouseOverStart = false;
@@ -277,10 +277,10 @@ public class MainMenu extends JFrame implements Runnable {
 								Main.drawMenu = false;
 								Main.init();
 								
-								setVisible(false);
+								this.setVisible(false);
 								isRunning = false;
 								
-								dispose();
+								this.dispose();
 							}
 						} else {
 							cl.mouseOver = false;
@@ -378,7 +378,7 @@ public class MainMenu extends JFrame implements Runnable {
 							g.drawImage(levelBox, levels[i][j].x, levels[i][j].y, 64, 64, null);
 					} 
 					
-					switch(levels[i][j].id) {
+					switch (levels[i][j].id) {
 						case 1:
 							g.drawImage(number1, levels[i][j].x + 25, levels[i][j].y + 15, 20, 32, null);
 							break;
