@@ -392,13 +392,14 @@ public class PlayGame extends JFrame implements Runnable {
 		@SuppressWarnings("static-access")
 		public void keyReleased(KeyEvent e) {
 			int keyCode = e.getKeyCode();
-			if(keyCode == e.VK_UP || keyCode == e.VK_W)
+			
+			if (keyCode == e.VK_UP || keyCode == e.VK_W)
 				player.dy = 0;
-			if(keyCode == e.VK_DOWN || keyCode == e.VK_S)
+			if (keyCode == e.VK_DOWN || keyCode == e.VK_S)
 				player.dy = 0;
-			if(keyCode == e.VK_RIGHT || keyCode == e.VK_D)
+			if (keyCode == e.VK_RIGHT || keyCode == e.VK_D)
 				player.dx = 0;
-			if(keyCode == e.VK_LEFT || keyCode == e.VK_A) 
+			if (keyCode == e.VK_LEFT || keyCode == e.VK_A) 
 				player.dx = 0;
 		}
 	}
@@ -414,124 +415,132 @@ public class PlayGame extends JFrame implements Runnable {
 			e.printStackTrace();
 		}
 		
-		SpriteSheet ss = new SpriteSheet(spriteSheet);
+		SpriteSheet spritesheet = new SpriteSheet(spriteSheet);
 		
-		bottomRightCorner = ss.grabSprite(700, 220, 40, 40);
-		bottomLeftCorner = ss.grabSprite(750, 220, 40, 40);
-		topLeftCorner = ss.grabSprite(800, 220, 40, 40);
-		noSides = ss.grabSprite(850, 220, 40, 40);
-		greenPiece = ss.grabSprite(900, 220, 40, 40);
-		rightEnd = ss.grabSprite(950, 220, 40, 40);
-		bottomEnd = ss.grabSprite(1000, 220, 40, 40);
-		bottomPiece = ss.grabSprite(700, 270, 40, 40);
-		leftPiece = ss.grabSprite(750, 270, 40, 40);
-		topRightCorner = ss.grabSprite(800, 270, 40, 40);
-		playerPic = ss.grabSprite(855, 275, 30, 30);
-		lightBlue = ss.grabSprite(900, 270, 40, 40);
-		horizontalSides = ss.grabSprite(950, 270, 40, 40);
-		leftEnd = ss.grabSprite(1000, 270, 40, 40);
-		allPiece = ss.grabSprite(700, 320, 40, 40);
-		topPiece = ss.grabSprite(750, 320, 40, 40);
-		rightPiece = ss.grabSprite(800, 320, 40, 40);
-		food = ss.grabSprite(850, 320, 40, 40);
-		whitePiece = ss.grabSprite(900, 320, 40, 40);
-		verticalSides = ss.grabSprite(950, 320, 40, 40);
-		topEnd = ss.grabSprite(1000, 320, 40, 40);
-		enemy = ss.grabSprite(1060, 330, 20, 20);
-		mainMenuPicture = ss.grabSprite(0, 361, 163, 140);
-		resumePicture = ss.grabSprite(0, 503, 245, 60);
-		mainMenuHover = ss.grabSprite(174,361, 163, 140);
-		resumeHover = ss.grabSprite(254, 503, 245, 60);
-		pauseBackground = ss.grabSprite(5, 580, 530, 300);
+		bottomRightCorner = spritesheet.grabSprite(700, 220, 40, 40);
+		bottomLeftCorner = spritesheet.grabSprite(750, 220, 40, 40);
+		topLeftCorner = spritesheet.grabSprite(800, 220, 40, 40);
+		noSides = spritesheet.grabSprite(850, 220, 40, 40);
+		greenPiece = spritesheet.grabSprite(900, 220, 40, 40);
+		rightEnd = spritesheet.grabSprite(950, 220, 40, 40);
+		bottomEnd = spritesheet.grabSprite(1000, 220, 40, 40);
+		bottomPiece = spritesheet.grabSprite(700, 270, 40, 40);
+		leftPiece = spritesheet.grabSprite(750, 270, 40, 40);
+		topRightCorner = spritesheet.grabSprite(800, 270, 40, 40);
+		playerPic = spritesheet.grabSprite(855, 275, 30, 30);
+		lightBlue = spritesheet.grabSprite(900, 270, 40, 40);
+		horizontalSides = spritesheet.grabSprite(950, 270, 40, 40);
+		leftEnd = spritesheet.grabSprite(1000, 270, 40, 40);
+		allPiece = spritesheet.grabSprite(700, 320, 40, 40);
+		topPiece = spritesheet.grabSprite(750, 320, 40, 40);
+		rightPiece = spritesheet.grabSprite(800, 320, 40, 40);
+		food = spritesheet.grabSprite(850, 320, 40, 40);
+		whitePiece = spritesheet.grabSprite(900, 320, 40, 40);
+		verticalSides = spritesheet.grabSprite(950, 320, 40, 40);
+		topEnd = spritesheet.grabSprite(1000, 320, 40, 40);
+		enemy = spritesheet.grabSprite(1060, 330, 20, 20);
+		mainMenuPicture = spritesheet.grabSprite(0, 361, 163, 140);
+		resumePicture = spritesheet.grabSprite(0, 503, 245, 60);
+		mainMenuHover = spritesheet.grabSprite(174,361, 163, 140);
+		resumeHover = spritesheet.grabSprite(254, 503, 245, 60);
+		pauseBackground = spritesheet.grabSprite(5, 580, 530, 300);
 		
 		resumeR = new MyRectangle(245, 60, 210, 310);
 		mainMenuR = new MyRectangle(163, 140, 210, 160);
-		playerColorOne = ss.grabSprite(400, 360, 64, 64);
-		playerColorTwo = ss.grabSprite(470, 360, 64, 64);
-		playerColorThree = ss.grabSprite(550, 360, 64, 64);
-		playerColorFour = ss.grabSprite(623, 360, 64, 64);
+		playerColor1 = spritesheet.grabSprite(400, 360, 64, 64);
+		playerColor2 = spritesheet.grabSprite(470, 360, 64, 64);
+		playerColor3 = spritesheet.grabSprite(550, 360, 64, 64);
+		playerColor4 = spritesheet.grabSprite(623, 360, 64, 64);
 	}	
 	
 	public void move() {
 		player.x += player.dx;
 		player.y += player.dy;
 		
-		for(int i=0; i < ground.size(); i++) {
+		for (int i = 0; i < ground.size(); i++) {
 			player.blockRectangle(player, ground.get(i));
 		}
 		
-		for(int i=0; i < enemies.size(); i++) {
+		for (int i = 0; i < enemies.size(); i++) {
 			
-			//For enemies moving up or down
-			if(enemies.get(i).id == 1) {
+			// For enemies moving up or down
+			if (enemies.get(i).id == 1) {
 				enemies.get(i).y += enemies.get(i).dy;
 				
-				if(enemies.get(i).y > enemies.get(i).maxY) {
+				if (enemies.get(i).y > enemies.get(i).maxY) {
 					enemies.get(i).y = enemies.get(i).maxY;
 					enemies.get(i).dy *= -1;
-				} else if(enemies.get(i).y < enemies.get(i).minY) {
+				} else if (enemies.get(i).y < enemies.get(i).minY) {
 					enemies.get(i).y = enemies.get(i).minY;
 					enemies.get(i).dy *= -1;
 				}
-			} //For enemies moving left or right 
-			else if(enemies.get(i).id == 2 || enemies.get(i).id == 20) {
+			}
+				
+			// For enemies moving left or right 
+			else if (enemies.get(i).id == 2 || enemies.get(i).id == 20) {
 				enemies.get(i).x += enemies.get(i).dx;
 				
-				if(enemies.get(i).x > enemies.get(i).maxX) {
+				if (enemies.get(i).x > enemies.get(i).maxX) {
 					enemies.get(i).x = enemies.get(i).maxX;
 					enemies.get(i).dx *= -1;
-				} else if(enemies.get(i).x < enemies.get(i).minX) {
+				} else if (enemies.get(i).x < enemies.get(i).minX) {
 					enemies.get(i).x = enemies.get(i).minX;
 					enemies.get(i).dx *= -1;
 				}
-			} //For enemies moving in a square radius
-			else if(enemies.get(i).id == 3) {
+			}
+				
+			// For enemies moving in a square radius
+			else if (enemies.get(i).id == 3) {
 				MyRectangle currentEnemy = enemies.get(i);
 				
 				currentEnemy.x += currentEnemy.dx;
 				currentEnemy.y += currentEnemy.dy;
 				
-				if(currentEnemy.x > currentEnemy.maxX) {
+				if (currentEnemy.x > currentEnemy.maxX) {
 					currentEnemy.x = currentEnemy.maxX;
 					currentEnemy.dx = 0;
 					currentEnemy.dy = enemySpeed;
-				} else if(currentEnemy.x < currentEnemy.minX) {
+				} else if (currentEnemy.x < currentEnemy.minX) {
 					currentEnemy.x = currentEnemy.minX;
 					currentEnemy.dx = 0;
 					currentEnemy.dy = -enemySpeed;
 				}
 				
-				if(currentEnemy.y > currentEnemy.maxY) {
+				if (currentEnemy.y > currentEnemy.maxY) {
 					currentEnemy.y = currentEnemy.maxY;
 					currentEnemy.dy = 0;
 					currentEnemy.dx = -enemySpeed;
-				} else if(currentEnemy.y < currentEnemy.minY){
+				} else if (currentEnemy.y < currentEnemy.minY){
 					currentEnemy.y = currentEnemy.minY;
 					currentEnemy.dy = 0;
 					currentEnemy.dx = enemySpeed;
 				}
 			}
 			
-			if(enemies.get(i).blockRectangle(player, enemies.get(i)) != 0) {
+			if (enemies.get(i).blockRectangle(player, enemies.get(i)) != 0) {
 				died = true;
 				deaths++;
 			}
 			
-			if(died) {
+			if (died) {
 				playDeathAnimation();
+				
 				player.x = initialX;
 				player.y = initialY;
+				
 				died = false;
 				foodCount = 0;
 				
-				for(int j=0; j < foodObjects.size(); j++) {
+				for (int j = 0; j < foodObjects.size(); j++) {
 					MyRectangle currentFood = foodObjects.get(j);
+					
 					currentFood.width = 20;
 					currentFood.height = 20;
-					if(currentFood.x < 0)
+					
+					if (currentFood.x < 0)
 						currentFood.x += 10000;
 					
-					if(currentFood.y < 0)
+					if (currentFood.y < 0)
 						currentFood.y += 10000;
 					
 					levelObjects[currentFood.i][currentFood.j] = 20;
@@ -539,7 +548,6 @@ public class PlayGame extends JFrame implements Runnable {
 				}
 				
 				path = file.getAbsolutePath();
-				
 				
 				try {
 					writer = new PrintWriter(path, "UTF-8");
@@ -549,21 +557,25 @@ public class PlayGame extends JFrame implements Runnable {
 					e.printStackTrace();
 				}
 				
-				for(int j=0; j < 35; j++) {
+				for (int j = 0; j < 35; j++) {
 					int x = j % 7;
 					int y = j % 5;
+					
 					boolean lockValue = false;
-					if(j < currentLevel)
+					
+					if (j < currentLevel)
 						lockValue = true;
 					
 					String truth;
-					if(lockValue || MainMenu.levels[x][y].unlocked)
+					
+					if (lockValue || MainMenu.levels[x][y].unlocked)
 						truth = "true\n";
 					else 
 						truth = "false\n";
-					writer.write(j + 1 + "=" + truth);
 					
+					writer.write(j + 1 + "=" + truth);
 				}
+				
 				writer.write("deaths=" + deaths);
 				
 				writer.close();
@@ -571,44 +583,46 @@ public class PlayGame extends JFrame implements Runnable {
 				
 		}
 		
-		for(int i=0; i < foodObjects.size(); i++) {
+		for (int i = 0; i < foodObjects.size(); i++) {
 			MyRectangle currentFood = foodObjects.get(i);
 			
-			if(currentFood.blockRectangle(currentFood, player) != 0) {
+			if (currentFood.blockRectangle(currentFood, player) != 0) {
 				levelObjects[currentFood.i][currentFood.j] = 0;
 				
 				currentFood.x -= 10000;
 				currentFood.y -= 10000;
+				
 				currentFood.width = 0;
 				currentFood.height = 0;
+				
 				foodCount--;
+				
 				System.out.println(foodCount);	
 			}
 		}
 		
-		if(checkpoint != null) {
-			if(player.x + 10 > checkpoint.x && player.x + player.width - 10 < checkpoint.x + checkpoint.width && player.y + 10
-					> checkpoint.y && player.y + player.height - 10 < checkpoint.y + checkpoint.height) {
-				for(int i=0; i < foodObjects.size(); i++) {
+		if (checkpoint != null) {
+			if (player.x + 10 > checkpoint.x && player.x + player.width - 10 < checkpoint.x + checkpoint.width && player.y + 10 > checkpoint.y && player.y + player.height - 10 < checkpoint.y + checkpoint.height) {
+				for (int i = 0; i < foodObjects.size(); i++) {
 					MyRectangle currentFood = foodObjects.get(i);
-					if(currentFood.x < 0 || currentFood.y < 0) {
+					
+					if (currentFood.x < 0 || currentFood.y < 0) {
 						foodObjects.remove(i);
 					}
 				}
 				
-				if(initialX != checkpoint.x && initialY != checkpoint.y) {
+				if (initialX != checkpoint.x && initialY != checkpoint.y) {
 					initialX = checkpoint.x;
 					initialY = checkpoint.y;
+					
 					levelObjects[checkpoint.i][checkpoint.j] = 12;
 					levelObjects[player.i][player.j] = 0;
 				}
 			}
 		}
 		
-		if(player.x + 10 > winSquare.x && player.x + player.width - 10 < winSquare.x + winSquare.width && player.y + 10
-				> winSquare.y && player.y + player.height - 10 < winSquare.y + winSquare.height && foodCount == 0) {
+		if (player.x + 10 > winSquare.x && player.x + player.width - 10 < winSquare.x + winSquare.width && player.y + 10 > winSquare.y && player.y + player.height - 10 < winSquare.y + winSquare.height && foodCount == 0) {
 			path = file.getAbsolutePath();
-			
 			
 			try {
 				writer = new PrintWriter(path, "UTF-8");
@@ -618,21 +632,26 @@ public class PlayGame extends JFrame implements Runnable {
 				e.printStackTrace();
 			}
 			
-			for(int i=0; i < 35; i++) {
+			for (int i = 0; i < 35; i++) {
 				int x = i % 7;
 				int y = i % 5;
+				
 				boolean lockValue = false;
-				if(i < currentLevel + 1)
+				
+				if (i < currentLevel + 1)
 					lockValue = true;
 				
 				String truth;
-				if(lockValue || MainMenu.levels[x][y].unlocked)
+				
+				if (lockValue || MainMenu.levels[x][y].unlocked)
 					truth = "true\n";
 				else 
 					truth = "false\n";
+				
 				writer.write(i + 1 + "=" + truth);
 				
 			}
+			
 			writer.write("deaths=" + deaths);
 			
 			writer.close();
@@ -640,25 +659,29 @@ public class PlayGame extends JFrame implements Runnable {
 			transitionAnimation(PlayGame.transitionMessage, PlayGame.transitionTime);
 		}	
 		
-		if(refresh) {
-			for(int j=0; j < foodObjects.size(); j++) {
+		if (refresh) {
+			for (int j = 0; j < foodObjects.size(); j++) {
 				MyRectangle currentFood = foodObjects.get(j);
+				
 				currentFood.width = 20;
 				currentFood.height = 20;
-				if(currentFood.x < 0)
+				
+				if (currentFood.x < 0)
 					currentFood.x += 10000;
 				
-				if(currentFood.y < 0)
+				if (currentFood.y < 0)
 					currentFood.y += 10000;
 				
 				levelObjects[currentFood.i][currentFood.j] = 20;
 				foodCount++;
 			}
 			
-			setVisible(false);
+			this.setVisible(false);
 			isRunning = false;
-			dispose();
+			
+			this.dispose();
 			refresh = false;
+			
 			Main.init();
 		}
 	}
@@ -667,70 +690,82 @@ public class PlayGame extends JFrame implements Runnable {
 		playTransition = true;
 		drawMap = false;
 		
-		if(currentLevel < 36)
+		if (currentLevel < 36)
 			currentLevel++;
 		else {
 			Main.playGame = false;
 			Main.drawMenu = true;
 			Main.init();
-			setVisible(false);
-			isRunning = false;
-			playTransition = false;
-			dispose();
-		}
 			
+			this.setVisible(false);
+			isRunning = false;
+			
+			playTransition = false;
+			
+			this.dispose();
+		}
 		
 		double currentTime = System.currentTimeMillis();
 		double previousTime = System.currentTimeMillis();
 		
-		while(previousTime - currentTime < time * 1000) {
+		while (previousTime - currentTime < time * 1000) {
 			previousTime = System.currentTimeMillis();
 		}
 		
-		if(currentLevel < 20) {
-			PlayGame.levelMap = GetLevelMap.getLevelMapOne(currentLevel);
-			PlayGame.levelObjects = GetLevelMap.getLevelObjectsOne(currentLevel);
-		}
-		else {
-			PlayGame.levelMap = GetLevelMapTwo.getLevelTwo(currentLevel);
-			PlayGame.levelObjects = GetLevelMapTwo.getLevelObjectsTwo(currentLevel);
+		if (currentLevel < 20) {
+			PlayGame.levelMap = GetLevelMap1.getLevelMap1(currentLevel);
+			PlayGame.levelObjects = GetLevelMap1.GetLevelObjects1(currentLevel);
+		} else {
+			PlayGame.levelMap = GetMapLevel2.getLevel2(currentLevel);
+			PlayGame.levelObjects = GetLevelMap2.getLevelObjects2(currentLevel);
 		}
 		
-		if(currentLevel < 36) {
+		if (currentLevel < 36) {
 			Main.playGame = true;
 			Main.drawMenu = false;
 			Main.init();
+			
 			PlayGame.deaths = deaths;
-			setVisible(false);
+			
+			this.setVisible(false);
 			isRunning = false;
+			
 			playTransition = false;
-			dispose();
+			
+			this.dispose();
 		}
 	}
 	
 	public void drawPause() {
-		if(mx > mainMenuR.x && mx < mainMenuR.x + mainMenuR.width && my > mainMenuR.y && my < mainMenuR.y + mainMenuR.height) {
+		if (mx > mainMenuR.x && mx < mainMenuR.x + mainMenuR.width && my > mainMenuR.y && my < mainMenuR.y + mainMenuR.height) {
 			mainMenuHovering = true;
-			if(mouseClicked) {
+			
+			if (mouseClicked) {
 				mouseClicked = false;
+				
 				Main.playGame = false;
 				Main.drawMenu = true;
 				Main.init();
-				setVisible(false);
+				
+				this.setVisible(false);
 				isRunning = false;
-				dispose();
+				
+				this.dispose();
 			}
 		} else {
 			mainMenuHovering = false;
 		}
 		
-		if(mx > resumeR.x && mx < resumeR.x + resumeR.width && my > resumeR.y && my < resumeR.y + resumeR.height){
+		if (mx > resumeR.x && mx < resumeR.x + resumeR.width && my > resumeR.y && my < resumeR.y + resumeR.height){
 			resumeHovering = true;
-			if(mouseClicked) {
+			
+			if (mouseClicked) {
 				pause = false;
 				countdown = true;
+				
 				mouseClicked = false;
 				isRunning = false;
+				
 				doCountDown();
 			}
 		} else {
@@ -740,18 +775,23 @@ public class PlayGame extends JFrame implements Runnable {
 	
 	public void doCountDown() {
 		double previousTime = 0;
-		while(true) {
+		while (true) {
 			double time = System.currentTimeMillis();
-			if(time - previousTime > 500) {
+			
+			if (time - previousTime > 500) {
 				countdownNumber--;
 				previousTime = System.currentTimeMillis();
 			}
-			if(countdownNumber == 0) {
+			
+			if (countdownNumber == 0) {
 				isRunning = true;
+				
 				countdown = false;
 				pause = false;
 				countdownNumber = 4;
+				
 				run();
+				
 				break;
 			}
 		}
@@ -759,20 +799,24 @@ public class PlayGame extends JFrame implements Runnable {
 	
 	public void playDeathAnimation() {
 		deathAnimation = true;
+		
 		double currentTime = System.currentTimeMillis();
 		double previousTime = System.currentTimeMillis();
+		
 		alpha = 1;
-		while(currentTime - previousTime < 1000) {
+		
+		while (currentTime - previousTime < 1000) {
 			currentTime = System.currentTimeMillis();
-		} 
+		}
+		
 		deathAnimation = false;
 	}
 	
 	public void paint(Graphics g) {
-		dbImage = createImage(getWidth(), getHeight());
-		dbg = dbImage.getGraphics();
-		paintComponent(dbg);
-		g.drawImage(dbImage, 0, 0, this);
+		doubleBufferImage = createImage(getWidth(), getHeight());
+		doubleBufferGraphics = doubleBufferImage.getGraphics();
+		paintComponent(doubleBufferGraphics);
+		g.drawImage(doubleBufferImage, 0, 0, this);
 	}
 	
 	public void paintComponent(Graphics g) {
