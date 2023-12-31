@@ -740,7 +740,7 @@ public class PlayGame extends JFrame implements Runnable {
 	}
 	
 	public void drawPause() {
-		if (mx > mainMenuR.x && mx < mainMenuR.x + mainMenuR.width && my > mainMenuR.y && my < mainMenuR.y + mainMenuR.height) {
+		if (mouseX > mainMenuR.x && mouseX < mainMenuR.x + mainMenuR.width && mouseY > mainMenuR.y && mouseY < mainMenuR.y + mainMenuR.height) {
 			mainMenuHovering = true;
 			
 			if (mouseClicked) {
@@ -759,7 +759,7 @@ public class PlayGame extends JFrame implements Runnable {
 			mainMenuHovering = false;
 		}
 		
-		if (mx > resumeR.x && mx < resumeR.x + resumeR.width && my > resumeR.y && my < resumeR.y + resumeR.height){
+		if (mouseX > resumeR.x && mouseX < resumeR.x + resumeR.width && mouseY > resumeR.y && mouseY < resumeR.y + resumeR.height){
 			resumeHovering = true;
 			
 			if (mouseClicked) {
@@ -823,203 +823,204 @@ public class PlayGame extends JFrame implements Runnable {
 	}
 	
 	public void paintComponent(Graphics g) {
-		if(drawMap) {
-			for(int i=0; i < levelMap.length; i++) {
-				for(int j=0; j < levelMap[i].length; j++) {
+		if (drawMap) {
+			for (int i = 0; i < levelMap.length; i++) {
+				for (int j = 0; j < levelMap[i].length; j++) {
 					int currentTile = levelMap[i][j];
-					switch(currentTile) {
-					case 1:
-						g.drawImage(bottomRightCorner, j * 40, i * 40, 40, 40, null);
-						break;
-					case 2:
-						g.drawImage(bottomLeftCorner, j * 40, i * 40, 40, 40, null);
-						break;
-					case 3:
-						g.drawImage(topLeftCorner, j * 40, i * 40, 40, 40, null);
-						break;
-					case 4:
-						g.drawImage(noSides, j * 40, i * 40, 40, 40, null);
-						break;
-					case 5:
-						g.drawImage(greenPiece, j * 40, i * 40, 40, 40, null);
-						break;
-					case 6:
-						g.drawImage(rightEnd, j * 40, i * 40, 40, 40, null);
-						MyRectangle piece = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(piece);
-						break;
-					case 7:
-						g.drawImage(bottomEnd, j * 40, i * 40, 40, 40, null);
-						MyRectangle piece1 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(piece1);
-						break;
-					case 8:
-						g.drawImage(greenPiece, j * 40, i * 40, 40, 40, null);
-						break;
-					case 101:
-						g.drawImage(greenPiece, j * 40, i * 40, 40, 40, null);
-						break;
-					case 9:
-						g.drawImage(bottomPiece, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece);
-						break;
-					case 10:
-						g.drawImage(leftPiece, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece1 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece1);
-						break;
-					case 11:
-						g.drawImage(topRightCorner, j * 40, i * 40, 40, 40, null);
-						break;
-					case 13:
-						g.drawImage(lightBlue, j * 40, i * 40, 40, 40, null);
-						break;
-					case 14:
-						g.drawImage(horizontalSides, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece2 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece2);
-						break;
-					case 15:
-						g.drawImage(leftEnd, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece3 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece3);
-						break;
-					case 17:
-						g.drawImage(allPiece, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece4 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece4);
-						break;
-					case 18:
-						g.drawImage(topPiece, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece5 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece5);
-						break;
-					case 19:
-						g.drawImage(rightPiece, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece6 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece6);
-						break;
-					case 21:
-						g.drawImage(whitePiece, j * 40, i * 40, 40, 40, null);
-						break;
-					case 22:
-						g.drawImage(verticalSides, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece7 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece7);
-						break;
-					case 23:
-						g.drawImage(topEnd, j * 40, i * 40, 40, 40, null);
-						MyRectangle somePiece8 = new MyRectangle(40, 40, j * 40, i * 40);
-						ground.add(somePiece8);
-						break;
+					
+					switch (currentTile) {
+						case 1:
+							g.drawImage(bottomRightCorner, j * 40, i * 40, 40, 40, null);
+							break;
+						case 2:
+							g.drawImage(bottomLeftCorner, j * 40, i * 40, 40, 40, null);
+							break;
+						case 3:
+							g.drawImage(topLeftCorner, j * 40, i * 40, 40, 40, null);
+							break;
+						case 4:
+							g.drawImage(noSides, j * 40, i * 40, 40, 40, null);
+							break;
+						case 5:
+							g.drawImage(greenPiece, j * 40, i * 40, 40, 40, null);
+							break;
+						case 6:
+							g.drawImage(rightEnd, j * 40, i * 40, 40, 40, null);
+							MyRectangle piece0 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(piece0);
+							break;
+						case 7:
+							g.drawImage(bottomEnd, j * 40, i * 40, 40, 40, null);
+							MyRectangle piece1 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(piece1);
+							break;
+						case 8:
+							g.drawImage(greenPiece, j * 40, i * 40, 40, 40, null);
+							break;
+						case 101:
+							g.drawImage(greenPiece, j * 40, i * 40, 40, 40, null);
+							break;
+						case 9:
+							g.drawImage(bottomPiece, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece0 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece0);
+							break;
+						case 10:
+							g.drawImage(leftPiece, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece1 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece1);
+							break;
+						case 11:
+							g.drawImage(topRightCorner, j * 40, i * 40, 40, 40, null);
+							break;
+						case 13:
+							g.drawImage(lightBlue, j * 40, i * 40, 40, 40, null);
+							break;
+						case 14:
+							g.drawImage(horizontalSides, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece2 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece2);
+							break;
+						case 15:
+							g.drawImage(leftEnd, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece3 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece3);
+							break;
+						case 17:
+							g.drawImage(allPiece, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece4 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece4);
+							break;
+						case 18:
+							g.drawImage(topPiece, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece5 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece5);
+							break;
+						case 19:
+							g.drawImage(rightPiece, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece6 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece6);
+							break;
+						case 21:
+							g.drawImage(whitePiece, j * 40, i * 40, 40, 40, null);
+							break;
+						case 22:
+							g.drawImage(verticalSides, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece7 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece7);
+							break;
+						case 23:
+							g.drawImage(topEnd, j * 40, i * 40, 40, 40, null);
+							MyRectangle somePiece8 = new MyRectangle(40, 40, j * 40, i * 40);
+							ground.add(somePiece8);
+							break;
 					}
 				}
 			}
 			
-			for(int i=0; i < levelObjects.length; i++) {
-				for(int j=0; j < levelObjects[i].length; j++) {
-					if(levelObjects[i][j] == 20)
+			for (int i = 0; i < levelObjects.length; i++) {
+				for (int j = 0; j < levelObjects[i].length; j++) {
+					if (levelObjects[i][j] == 20)
 						g.drawImage(food, j * 40, i * 40, 40, 40, null);
 				}
 			}
 			
-			for(int i=0; i < enemies.size(); i++) {
+			for (int i = 0; i < enemies.size(); i++) {
 				g.drawImage(enemy, enemies.get(i).x, enemies.get(i).y, 20, 20, null);
 			}
 			
-			if(!schylersException) {
+			if (!schylersException) {
 				try {
-					if(deathAnimation) {
-						if(alpha > 0.01)
-							alpha -= 0.01; //draw half transparent
-						AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alpha);
-						((Graphics2D) g).setComposite(ac);
-						if(MainMenu.playerColor == 0)
+					if (deathAnimation) {
+						if (alpha > 0.01)
+							alpha -= 0.01; // Draw half transparent
+						AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
+						((Graphics2D)g).setComposite(ac);
+						if (MainMenu.playerColor == 0)
 							g.drawImage(playerPic, player.x, player.y, player.width, player.height, null);
-						else if(MainMenu.playerColor == 1)
-							g.drawImage(playerColorOne, player.x, player.y, player.width, player.height, null);
-						else if(MainMenu.playerColor == 2)
-							g.drawImage(playerColorTwo, player.x, player.y, player.width, player.height, null);
-						else if(MainMenu.playerColor == 3)
-							g.drawImage(playerColorThree, player.x, player.y, player.width, player.height, null);
-						else if(MainMenu.playerColor == 4)
-							g.drawImage(playerColorFour, player.x, player.y, player.width, player.height, null);
+						else if (MainMenu.playerColor == 1)
+							g.drawImage(playerColor1, player.x, player.y, player.width, player.height, null);
+						else if (MainMenu.playerColor == 2)
+							g.drawImage(playerColor2, player.x, player.y, player.width, player.height, null);
+						else if (MainMenu.playerColor == 3)
+							g.drawImage(playerColor3, player.x, player.y, player.width, player.height, null);
+						else if (MainMenu.playerColor == 4)
+							g.drawImage(playerColor4, player.x, player.y, player.width, player.height, null);
 					} else {
-						if(MainMenu.playerColor == 0)
+						if (MainMenu.playerColor == 0)
 							g.drawImage(playerPic, player.x, player.y, player.width, player.height, null);
-						else if(MainMenu.playerColor == 1)
-							g.drawImage(playerColorOne, player.x, player.y, player.width, player.height, null);
-						else if(MainMenu.playerColor == 2)
-							g.drawImage(playerColorTwo, player.x, player.y, player.width, player.height, null);
-						else if(MainMenu.playerColor == 3)
-							g.drawImage(playerColorThree, player.x, player.y, player.width, player.height, null);
-						else if(MainMenu.playerColor == 4)
-							g.drawImage(playerColorFour, player.x, player.y, player.width, player.height, null);
+						else if (MainMenu.playerColor == 1)
+							g.drawImage(playerColor1, player.x, player.y, player.width, player.height, null);
+						else if (MainMenu.playerColor == 2)
+							g.drawImage(playerColor2, player.x, player.y, player.width, player.height, null);
+						else if (MainMenu.playerColor == 3)
+							g.drawImage(playerColor3, player.x, player.y, player.width, player.height, null);
+						else if (MainMenu.playerColor == 4)
+							g.drawImage(playerColor4, player.x, player.y, player.width, player.height, null);
 					}
-				} catch(Exception e) {
+				} catch (Exception e) {
 					schylersException = true;
-					System.out.println("SCHYLERS EXCEPTION");
+					System.out.println("Schyler's Exception!");
 				}
 			} else {
-				if(deathAnimation) {
-					if(alpha > 0.01)
-						alpha -= 0.01; //draw half transparent
+				if (deathAnimation) {
+					if (alpha > 0.01)
+						alpha -= 0.01; // Draw half transparent
 					AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alpha);
-					((Graphics2D) g).setComposite(ac);
-					g.setColor(Color.black);
+					((Graphics2D)g).setComposite(ac);
+					g.setColor(Color.BLACK);
 					g.fillRect(player.x, player.y, player.width, player.height);
-					if(MainMenu.playerColor == 0) 
-						g.setColor(Color.red);
-					else if(MainMenu.playerColor == 1)
-						g.setColor(Color.green);
-					else if(MainMenu.playerColor == 2)
-						g.setColor(Color.cyan);
-					else if(MainMenu.playerColor == 3)
+					if (MainMenu.playerColor == 0) 
+						g.setColor(Color.RED);
+					else if (MainMenu.playerColor == 1)
+						g.setColor(Color.GREEN);
+					else if (MainMenu.playerColor == 2)
+						g.setColor(Color.CYAN);
+					else if (MainMenu.playerColor == 3)
 						g.setColor(Color.MAGENTA);
-					else if(MainMenu.playerColor == 4)
-						g.setColor(Color.orange);
+					else if (MainMenu.playerColor == 4)
+						g.setColor(Color.ORANGE);
 					g.fillRect(player.x + 2, player.y + 2, player.width - 4, player.height - 4);
 				} else {
-					g.setColor(Color.black);
+					g.setColor(Color.BLACK);
 					g.fillRect(player.x, player.y, player.width, player.height);
-					if(MainMenu.playerColor == 0) 
-						g.setColor(Color.red);
-					else if(MainMenu.playerColor == 1)
-						g.setColor(Color.green);
-					else if(MainMenu.playerColor == 2)
-						g.setColor(Color.cyan);
-					else if(MainMenu.playerColor == 3)
+					if (MainMenu.playerColor == 0) 
+						g.setColor(Color.RED);
+					else if (MainMenu.playerColor == 1)
+						g.setColor(Color.GREEN);
+					else if (MainMenu.playerColor == 2)
+						g.setColor(Color.CYAN);
+					else if (MainMenu.playerColor == 3)
 						g.setColor(Color.MAGENTA);
-					else if(MainMenu.playerColor == 4)
-						g.setColor(Color.orange);
+					else if (MainMenu.playerColor == 4)
+						g.setColor(Color.ORANGE);
 					g.fillRect(player.x + 2, player.y + 2, player.width - 4, player.height - 4);
 				}
 			}
 		}
 		
-		if(pause) {
+		if (pause) {
 			g.drawImage(pauseBackground, 200, 150, 530, 300, null);
 			
-			if(mainMenuHovering)
+			if (mainMenuHovering)
 				g.drawImage(mainMenuHover, 210, 160, 156, 135, null);
 			else
 				g.drawImage(mainMenuPicture, 210, 160, 156, 135, null);
 			
-			if(resumeHovering)
+			if (resumeHovering)
 				g.drawImage(resumeHover, 210, 310, 235, 50, null);
 			else
 				g.drawImage(resumePicture, 210, 310, 235, 50, null);
 		}
 		
-		if(countdown) {
+		if (countdown) {
 			Font otherFont = new Font("Times New Roman", 0, 80);
-			g.setColor(Color.black);
+			g.setColor(Color.BLACK);
 			g.setFont(otherFont);
 			g.drawString(Integer.toString(countdownNumber), 350, 250);
 		}
 		
-		if(playTransition) {
+		if (playTransition) {
 			g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
 			Font otherFont = new Font("Times New Roman", 0, 40);
 			g.setColor(Color.decode("0x24543d"));
@@ -1027,12 +1028,12 @@ public class PlayGame extends JFrame implements Runnable {
 			drawString(g, PlayGame.transitionMessage, 30, 200, 900);
 		}
 		
-		AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,1);
-		((Graphics2D) g).setComposite(ac);
-		g.setColor(Color.black);
+		AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
+		((Graphics2D)g).setComposite(ac);
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, getWidth(), 40);
 		
-		g.setColor(Color.white);
+		g.setColor(Color.WHITE);
 		Font font = new Font("Times New Roman", 0, 30);
 		g.setFont(font);
 		g.drawString("Deaths: " + deaths, (getWidth() / 2) - 50, 30);
@@ -1040,66 +1041,63 @@ public class PlayGame extends JFrame implements Runnable {
 		repaint();
 	}
 	
-	public void drawString(Graphics g, String s, int x, int y, int width)
-	{
+	public void drawString(Graphics g, String s, int x, int y, int width) {
 	    // FontMetrics gives us information about the width,
 	    // height, etc. of the current Graphics object's Font.
-	    FontMetrics fm = g.getFontMetrics();
+	    FontMetrics fontMetrics = g.getFontMetrics();
 
-	    int lineHeight = fm.getHeight();
+	    int lineHeight = fontMetrics.getHeight();
 
-	    int curX = x;
-	    int curY = y;
+	    int currentX = x;
+	    int currentY = y;
 
 	    String[] words = s.split(" ");
 
-	    for (String word : words)
-	    {
+	    for (String word : words) {
 	        // Find out the width of the word.
-	        int wordWidth = fm.stringWidth(word + " ");
+	        int wordWidth = fontMetrics.stringWidth(word + " ");
 
 	        // If text exceeds the width, then move to next line.
-	        if (curX + wordWidth >= x + width)
-	        {
-	            curY += lineHeight;
-	            curX = x;
+	        if (currentX + wordWidth >= x + width) {
+		    currentX = x;
+	            currentY += lineHeight;
 	        }
 
-	        g.drawString(word, curX, curY);
+	        g.drawString(word, currentX, currentY);
 
 	        // Move over to the right for next word.
-	        curX += wordWidth;
+	        currentX += wordWidth;
 	    }
 	}
 	
 	public void run() {
 		try {
-			while(isRunning && !pause) {
+			while (isRunning && !pause) {
 				move();
 				
 				Thread.sleep(30);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			while(pause && !countdown) {
+			while (pause && !countdown) {
 				drawPause();
 				
 				Thread.sleep(30);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			while(countdown && !isRunning) {
+			while (countdown && !isRunning) {
 				doCountDown();
 				
 				Thread.sleep(30);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
