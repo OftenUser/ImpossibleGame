@@ -3,7 +3,6 @@ package main;
 import java.util.ArrayList;
 
 public class GameState  {
-	
 	private int currentState;
 	private final int SCREEN_WIDTH = 1000;
 	private final int SCREEN_HEIGHT = 800;
@@ -14,7 +13,7 @@ public class GameState  {
 	public void setState(int newState) {
 		currentState = newState;
 		
-		if(currentState == 0) {
+		if (currentState == 0) {
 			MainMenu menu = new MainMenu(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE);
 			Thread t1 = new Thread(menu);
 			t1.start();
