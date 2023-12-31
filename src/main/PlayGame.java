@@ -7,7 +7,6 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.util.List;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -22,13 +21,14 @@ import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class PlayGame extends JFrame implements Runnable {
 	private boolean isRunning, mainMenuHovering, resumeHovering, countdown, deathAnimation;
-	private Image dbImage;
-	private Graphics dbg;
+	private Image doubleBufferImage;
+	private Graphics doubleBufferGraphics;
 	public static int[][] levelMap;
 	public static int[][] levelObjects;
 	private boolean drawMap = true;
@@ -99,6 +99,7 @@ public class PlayGame extends JFrame implements Runnable {
 		
 		for (int i = 0; i < dataFile.size(); i++) {
 			String[] truth = dataFile.get(i).split("=");
+			
 			if (truth[0].equals("deaths"))
 				deaths = Integer.parseInt(truth[1]);
 		}
@@ -139,12 +140,12 @@ public class PlayGame extends JFrame implements Runnable {
 				}
 				
 				// Enemy moving up				
-				if(levelObjects[i][j] >= 25 && (levelObjects[i][j] - 25) % 8 == 0) {
+				if (levelObjects[i][j] >= 25 && (levelObjects[i][j] - 25) % 8 == 0) {
 					int y = (i * 40) + 10;
 					int x = (j * 40) + 10;
 					int multiplyFactor = 0;
 					
-					if(levelObjects[i][j] == 25)
+					if (levelObjects[i][j] == 25)
 						multiplyFactor = 10;
 					else
 						multiplyFactor = 11 - ((levelObjects[i][j] - 25) / 8);
@@ -159,12 +160,12 @@ public class PlayGame extends JFrame implements Runnable {
 				
 				
 				// Enemy moving down
-				if(levelObjects[i][j] >= 26 && (levelObjects[i][j] - 26) % 8 == 0) {
-					int y = (i * 40) + 10;
+				if (levelObjects[i][j] >= 26 && (levelObjects[i][j] - 26) % 8 == 0) {
 					int x = (j * 40) + 10;
+					int y = (i * 40) + 10;
 					int multiplyFactor = 0;
 					
-					if(levelObjects[i][j] == 26)
+					if (levelObjects[i][j] == 26)
 						multiplyFactor = 10;
 					else
 						multiplyFactor = 11 - ((levelObjects[i][j] - 26) / 8);
@@ -178,12 +179,12 @@ public class PlayGame extends JFrame implements Runnable {
 				}
 				
 				// Enemy moving left
-				if(levelObjects[i][j] >= 27 && (levelObjects[i][j] - 27) % 8 == 0) {
-					int y = (i * 40) + 10;
+				if (levelObjects[i][j] >= 27 && (levelObjects[i][j] - 27) % 8 == 0) {
 					int x = (j * 40) + 10;
+					int y = (i * 40) + 10;
 					int multiplyFactor = 0;
 					
-					if(levelObjects[i][j] == 27)
+					if (levelObjects[i][j] == 27)
 						multiplyFactor = 10;
 					else
 						multiplyFactor = 11 - ((levelObjects[i][j] - 27) / 8);
@@ -197,12 +198,12 @@ public class PlayGame extends JFrame implements Runnable {
 				}
 					
 				// Enemy moving right
-				if(levelObjects[i][j] >= 28 && (levelObjects[i][j] - 28) % 8 == 0) {
-					int y = (i * 40) + 10;
+				if (levelObjects[i][j] >= 28 && (levelObjects[i][j] - 28) % 8 == 0) {
 					int x = (j * 40) + 10;
+					int y = (i * 40) + 10;
 					int multiplyFactor = 0;
 					
-					if(levelObjects[i][j] == 28)
+					if (levelObjects[i][j] == 28)
 						multiplyFactor = 10;
 					else
 						multiplyFactor = 11 - ((levelObjects[i][j] - 28) / 8);
@@ -216,12 +217,12 @@ public class PlayGame extends JFrame implements Runnable {
 				}
 				
 				// Enemy moving in a square of certain radius
-				if(levelObjects[i][j] >= 29 && (levelObjects[i][j] - 29) % 8 == 0) {
-					int y = (i * 40) + 10;
+				if (levelObjects[i][j] >= 29 && (levelObjects[i][j] - 29) % 8 == 0) {
 					int x = (j * 40) + 10;
+					int y = (i * 40) + 10;
 					int multiplyFactor = 0;
 					
-					if(levelObjects[i][j] == 29)
+					if (levelObjects[i][j] == 29)
 						multiplyFactor = 10;
 					else
 						multiplyFactor = 11 - ((levelObjects[i][j] - 29) / 8);
@@ -238,9 +239,9 @@ public class PlayGame extends JFrame implements Runnable {
 				}
 				
 				// Stationary enemy
-				if(levelObjects[i][j] == 30) {
-					int y = (i * 40) + 10;
+				if (levelObjects[i][j] == 30) {
 					int x = (j * 40) + 10;
+					int y = (i * 40) + 10;
 					MyRectangle enemyP = new MyRectangle(10, 10, x, y);
 					enemyP.dy = 0;
 					enemyP.dx = 0;
@@ -249,78 +250,78 @@ public class PlayGame extends JFrame implements Runnable {
 			}
 		}
 		
-		for(int i=0; i < levelMap.length; i++) {
-			for(int j=0; j < levelMap[i].length; j++) {
+		for (int i = 0; i < levelMap.length; i++) {
+			for (int j = 0; j < levelMap[i].length; j++) {
 				int currentTile = levelMap[i][j];
-				switch(currentTile) {
-				case 1:
-					MyRectangle OtherNewPiece = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(OtherNewPiece);
-					break;
-				case 2:
-					MyRectangle OtherNewPiece1 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(OtherNewPiece1);
-					break;
-				case 3:
-					MyRectangle OtherNewPiece2 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(OtherNewPiece2);
-					break;
-				case 6:
-					MyRectangle piece = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(piece);
-					break;
-				case 7:
-					MyRectangle piece1 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(piece1);
-					break;
-				case 8:
-					winSquare = new MyRectangle(40, 40, j * 40, i * 40);
-					break;
-				case 9:
-					MyRectangle somePiece = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece);
-					break;
-				case 10:
-					MyRectangle somePiece1 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece1);
-					break;
-				case 11:
-					MyRectangle somePiece144 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece144);
-					break;
-				case 14:
-					MyRectangle somePiece2 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece2);
-					break;
-				case 15:
-					MyRectangle somePiece3 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece3);
-					break;
-				case 17:
-					MyRectangle somePiece4 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece4);
-					break;
-				case 18:
-					MyRectangle somePiece5 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece5);
-					break;
-				case 19:
-					MyRectangle somePiece6 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece6);
-					break;
-				case 22:
-					MyRectangle somePiece7 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece7);
-					break;
-				case 23:
-					MyRectangle somePiece8 = new MyRectangle(40, 40, j * 40, i * 40);
-					ground.add(somePiece8);
-					break;
-				case 101:
-					checkpoint = new MyRectangle(40, 40, j * 40, i * 40);
-					checkpoint.i = i;
-					checkpoint.j = j;
-					break;
+				switch (currentTile) {
+					case 1:
+						MyRectangle otherNewPiece0 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(otherNewPiece0);
+						break;
+					case 2:
+						MyRectangle OtherNewPiece1 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(OtherNewPiece1);
+						break;
+					case 3:
+						MyRectangle OtherNewPiece2 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(OtherNewPiece2);
+						break;
+					case 6:
+						MyRectangle piece = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(piece);
+						break;
+					case 7:
+						MyRectangle piece1 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(piece1);
+						break;
+					case 8:
+						winSquare = new MyRectangle(40, 40, j * 40, i * 40);
+						break;
+					case 9:
+						MyRectangle somePiece0 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece0);
+						break;
+					case 10:
+						MyRectangle somePiece1 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece1);
+						break;
+					case 11:
+						MyRectangle somePiece144 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece144);
+						break;
+					case 14:
+						MyRectangle somePiece2 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece2);
+						break;
+					case 15:
+						MyRectangle somePiece3 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece3);
+						break;
+					case 17:
+						MyRectangle somePiece4 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece4);
+						break;
+					case 18:
+						MyRectangle somePiece5 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece5);
+						break;
+					case 19:
+						MyRectangle somePiece6 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece6);
+						break;
+					case 22:
+						MyRectangle somePiece7 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece7);
+						break;
+					case 23:
+						MyRectangle somePiece8 = new MyRectangle(40, 40, j * 40, i * 40);
+						ground.add(somePiece8);
+						break;
+					case 101:
+						checkpoint = new MyRectangle(40, 40, j * 40, i * 40);
+						checkpoint.i = i;
+						checkpoint.j = j;
+						break;
 				}
 			}
 		}
