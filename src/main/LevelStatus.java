@@ -18,5 +18,4 @@ public class LevelStatus {
 		this.width = newWidth;
 		this.height = newHeight;
 	}
-	
 }
