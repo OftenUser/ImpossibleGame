@@ -265,7 +265,7 @@ public class MainMenu extends JFrame implements Runnable {
 									PlayGame.levelMap = GetLevelMap1.getLevelMap1(levels[i][j].id);
 									PlayGame.levelObjects = GetLevelMap1.getLevelObjects1(levels[i][j].id);
 								} else {
-									PlayGame.levelMap = GetLevelMap2.getLevel2(levels[i][j].id);
+									PlayGame.levelMap = GetLevelMap2.getLevelMap2(levels[i][j].id);
 									PlayGame.levelObjects = GetLevelMap2.getLevelObjects2(levels[i][j].id);
 								}
 
