@@ -3,7 +3,6 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -13,17 +12,18 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import jaba.util.List;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame implements Runnable {
 	private boolean isRunning, mouseClicked, mouseOverStart, mouseOverSelect, drawMenu, drawLevels, backArrowHovering, doParticleEffect;
-	private Image dbImage, startNoHover, selectLevelNoHover, startHover, selectLevelHover, titleImage, background,
-	floatingPlayer, levelBox, levelBoxHover, lockedLevel, numberOne, numberTwo, numberThree, numberFour, numberFive,
-	numberSix, numberSeven, numberEight, numberNine, numberZero, backArrow, backArrowHover, playerColorOne, playerColorTwo, playerColorThree, playerColorFour;
+	private Image doubleBufferImage, startNoHover, selectLevelNoHover, startHover, selectLevelHover, titleImage, background,
+	floatingPlayer, levelBox, levelBoxHover, lockedLevel, number1, number2, number3, number4, number5,
+	number6, number7, number8, number9, number0, backArrow, backArrowHover, playerColor1, playerColor2, playerColor3, playerColor4;
 	private MyRectangle player, startR, selectR, backR;
-	SpriteSheet ss;
-	private Graphics dbg;
+	SpriteSheet spritesheet;
+	private Graphics doubleBufferGraphics;
 	private int SW, SH, mx, my;
 	public static LevelStatus[][] levels = new LevelStatus[7][5];
 	public static int playerColor = 0;
@@ -37,33 +37,34 @@ public class MainMenu extends JFrame implements Runnable {
 	private boolean schylersException = false;
 	
 	public MainMenu(int width, int height, String title) {
-		setSize(width, height);
-		setTitle(title);
-		setResizable(false);
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(width, height);
+		this.setTitle(title);
+		this.setResizable(false);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		isRunning = true;
-		addMouseListener(new ML());
-		addMouseMotionListener(new ML());
-		//addKeyListener(new AL());
+		
+		this.addMouseListener(new ML());
+		this.addMouseMotionListener(new ML());
+		// this.addKeyListener(new AL());
 		
 		player = new MyRectangle(64, 64, 100, 180);
 		player.dx = 5;
 		player.dy = 3;
+		
 		SW = width; 
 		SH = height;
+		
 		drawMenu = true;
 		
-		
-		if(System.getProperty("os.name").toLowerCase().contains("linux")) {
+		if (System.getProperty("os.name").toLowerCase().contains("linux")) {
 			file = new File(System.getProperty("user.home") + "/impossibleGame/userData.txt");
 			wkdir = new File(System.getProperty("user.home") + "/impossibleGame");
-		}
-		else if(System.getProperty("os.name").toLowerCase().contains("windows")) {
+		} else if (System.getProperty("os.name").toLowerCase().contains("windows")) {
 			file = new File(System.getProperty("user.home") + File.separator + "impossibleGame" + File.separator + "userData.txt");
 			wkdir = new File(System.getProperty("user.home") + File.separator + "impossibleGame");
-		}
-		else if(System.getProperty("os.name").toLowerCase().contains("mac os")) {
+		} else if (System.getProperty("os.name").toLowerCase().contains("mac os")) {
 			file = new File(System.getProperty("user.home") + File.separator + "impossibleGame" + File.separator + "userData.txt");
 			wkdir = new File(System.getProperty("user.home") + File.separator + "impossibleGame");
 		}
@@ -76,13 +77,16 @@ public class MainMenu extends JFrame implements Runnable {
 			e.printStackTrace();
 		}
 		
-		for(int i=0; i < dataFile.size() - 1; i++) {
+		for (int i = 0; i < dataFile.size() - 1; i++) {
 			String[] truth = dataFile.get(i).split("=");
+			
 			int x = i % 7;
 			int rx = i / 7;
 			int y = i % 5;
+			
 			boolean lockValue = false;
-			if(truth[1].equals("true"))
+			
+			if (truth[1].equals("true"))
 				lockValue = true;
 	
 			levels[x][y] = new LevelStatus(i + 1, lockValue, ((x % 7) * 115) + 130, ((rx % 5) * 125) + 87, 64, 64);
@@ -127,16 +131,16 @@ public class MainMenu extends JFrame implements Runnable {
 		levelBox = ss.grabSprite(550, 296, 64, 64);
 		lockedLevel = ss.grabSprite(470, 296, 64, 64);
 		levelBoxHover = ss.grabSprite(623, 296, 64, 64);
-		numberOne = ss.grabSprite(400, 256, 20, 32);
-		numberTwo = ss.grabSprite(430, 256, 20, 32);
-		numberThree = ss.grabSprite(460, 256, 20, 32);
-		numberFour = ss.grabSprite(490, 256, 20, 32);
-		numberFive = ss.grabSprite(520, 256, 20, 32);
-		numberSix = ss.grabSprite(550, 256, 20, 32);
-		numberSeven = ss.grabSprite(580, 256, 20, 32);
-		numberEight = ss.grabSprite(610, 256, 20, 32);
-		numberNine = ss.grabSprite(640, 256, 20, 32);
-		numberZero = ss.grabSprite(670, 256, 20, 32);
+		number1 = ss.grabSprite(400, 256, 20, 32);
+		number2 = ss.grabSprite(430, 256, 20, 32);
+		number3 = ss.grabSprite(460, 256, 20, 32);
+		number4 = ss.grabSprite(490, 256, 20, 32);
+		number5 = ss.grabSprite(520, 256, 20, 32);
+		number6 = ss.grabSprite(550, 256, 20, 32);
+		number7 = ss.grabSprite(580, 256, 20, 32);
+		number8 = ss.grabSprite(610, 256, 20, 32);
+		number9 = ss.grabSprite(640, 256, 20, 32);
+		number0 = ss.grabSprite(670, 256, 20, 32);
 		backArrow = ss.grabSprite(410, 165, 125, 75);
 		backArrowHover = ss.grabSprite(550, 165, 125, 75);
 
@@ -144,11 +148,11 @@ public class MainMenu extends JFrame implements Runnable {
 		selectR = new MyRectangle(185, 135, 500, 350);
 		backR = new MyRectangle(125, 75, 440, 690);
 		
-		floatingPlayer = ss.grabSprite(400, 296, 64, 64);
-		playerColorOne = ss.grabSprite(400, 360, 64, 64);
-		playerColorTwo = ss.grabSprite(470, 360, 64, 64);
-		playerColorThree = ss.grabSprite(550, 360, 64, 64);
-		playerColorFour = ss.grabSprite(623, 360, 64, 64);
+		floatingPlayer = spritesheet.grabSprite(400, 296, 64, 64);
+		playerColor1 = spritesheet.grabSprite(400, 360, 64, 64);
+		playerColor2 = spritesheet.grabSprite(470, 360, 64, 64);
+		playerColor3 = spritesheet.grabSprite(550, 360, 64, 64);
+		playerColor4 = spritesheet.grabSprite(623, 360, 64, 64);
 	}
 
 	
@@ -156,84 +160,90 @@ public class MainMenu extends JFrame implements Runnable {
 		player.x += player.dx;
 		player.y += player.dy;
 		
-		if(mx > player.x && mx < player.x + player.width && my > player.y && my < player.y + player.height && mouseClicked) {
+		if (mx > player.x && mx < player.x + player.width && my > player.y && my < player.y + player.height && mouseClicked) {
 			playerColor++;
 			mouseClicked = false;
 			
-			if(playerColor > 4)
+			if (playerColor > 4)
 				playerColor = 0;
+			
 			doParticleEffect = true;
 			
-			if(playerColor == 0)
+			if (playerColor == 0)
 				particleColor = Color.decode("0xff6600");
-			else if(playerColor == 1) 
+			else if (playerColor == 1) 
 				particleColor = Color.decode("0xff0000");
-			else if(playerColor == 2)
+			else if (playerColor == 2)
 				particleColor = Color.decode("0x008033");
-			else if(playerColor == 3)
+			else if (playerColor == 3)
 				particleColor = Color.decode("0x00aad4");
-			else if(playerColor == 4)
+			else if (playerColor == 4)
 				particleColor = Color.decode("0xaa00d4");
 			
-			for(int i=0; i < 100; i++) {
+			for (int i = 0; i < 100; i++) {
 				int size = (int)((Math.random() * 20) + 10);
 				int life = (int)( (Math.random() * 300) + 100);
-				int particleDx = (int)( (Math.random() * 3) - (Math.random() * 6));
-				int particleDy = (int)( -(Math.random() * 3) - 1);
+				int particleDx = (int)((Math.random() * 3) - (Math.random() * 6));
+				int particleDy = (int)(-(Math.random() * 3) - 1);
 				Particle p = new Particle(size, life, player.x + player.width / 2, player.y + player.height / 2, particleColor, particleDx, particleDy);
 				particles.add(p);
 			}
 		}
 		
-		if(doParticleEffect) {
-			for(int i=0; i < particles.size(); i++) {
+		if (doParticleEffect) {
+			for (int i = 0; i < particles.size(); i++) {
 				Particle current = particles.get(i);
-				if( !(current.update()) )
+				
+				if(!(current.update()))
 					particles.remove(i);
 			}
 				
-			if(particles.size() <= 0)
+			if (particles.size() <= 0)
 				doParticleEffect = false;
 		}
 		
-		if(player.x + player.width > SW) {
+		if (player.x + player.width > SW) {
 			player.x = SW - player.width;
 			player.dx = -player.dx;
-		}
-		else if(player.x < 0) {
+		} else if (player.x < 0) {
 			player.x = 0;
 			player.dx = -player.dx;
 		}
 		
-		if(player.y > SH - player.height) {
+		if (player.y > SH - player.height) {
 			player.y = SH - player.height;
 			player.dy = -player.dy;
-		}
-		else if(player.y < 0) {
+		} else if (player.y < 0) {
 			player.y = 0;
 			player.dy *= -1;
 		}
 		
-		if(mx > startR.x && mx < startR.x + startR.width && my > startR.y && my < startR.y + startR.height && !drawLevels) {
+		if (mx > startR.x && mx < startR.x + startR.width && my > startR.y && my < startR.y + startR.height && !drawLevels) {
 			mouseOverStart = true;
-			if(mouseClicked) {
-				PlayGame.levelMap = GetLevelMap.getLevelMapOne(1);
-				PlayGame.levelObjects = GetLevelMap.getLevelObjectsOne(1);
+			
+			if (mouseClicked) {
+				PlayGame.levelMap = GetLevelMap1.getLevelMap1(1);
+				PlayGame.levelObjects = GetLevelMap1.getLevelObjects1(1);
 				PlayGame.currentLevel = 1;
+				
 				mouseClicked = false;
+				
 				Main.playGame = true;
 				Main.drawMenu = false;
 				Main.init();
+				
 				setVisible(false);
 				isRunning = false;
+				
 				dispose();
 			}
 		} else 
 			mouseOverStart = false;
 		
-		if(mx > selectR.x && mx < selectR.x + selectR.width && my > selectR.y && my < selectR.y + selectR.height && !drawLevels) {
+		if (mx > selectR.x && mx < selectR.x + selectR.width && my > selectR.y && my < selectR.y + selectR.height && !drawLevels) {
 			mouseOverSelect = true;
-			if(mouseClicked) {
+			
+			if (mouseClicked) {
 				drawLevels = true;
 				mouseClicked = false;
 				drawMenu = false;
@@ -241,30 +251,33 @@ public class MainMenu extends JFrame implements Runnable {
 		} else 
 			mouseOverSelect = false;
 		
-		if(drawLevels) {
-			for(int i=0; i < levels.length; i++) {
-				for(int j=0; j < levels[i].length; j++) {
+		if (drawLevels) {
+			for (int i = 0; i < levels.length; i++) {
+				for (int j = 0; j < levels[i].length; j++) {
 					LevelStatus cl = levels[i][j];
-					if(cl.unlocked) {
-						if(mx > cl.x && mx < cl.x + cl.width && my > cl.y && my < cl.y + cl.height) {
+					if (cl.unlocked) {
+						if (mx > cl.x && mx < cl.x + cl.width && my > cl.y && my < cl.y + cl.height) {
 							cl.mouseOver = true;
-							if(mouseClicked) {
-								if(levels[i][j].id < 20) {
-									PlayGame.levelMap = GetLevelMap.getLevelMapOne(levels[i][j].id);
-									PlayGame.levelObjects = GetLevelMap.getLevelObjectsOne(levels[i][j].id);
-								}
-								else {
-									PlayGame.levelMap = GetLevelMapTwo.getLevelTwo(levels[i][j].id);
-									PlayGame.levelObjects = GetLevelMapTwo.getLevelObjectsTwo(levels[i][j].id);
+							if (mouseClicked) {
+								if (levels[i][j].id < 20) {
+									PlayGame.levelMap = GetLevelMap1.getLevelMap1(levels[i][j].id);
+									PlayGame.levelObjects = GetLevelMap1.getLevelObjects1(levels[i][j].id);
+								} else {
+									PlayGame.levelMap = GetLevelMap2.getLevel2(levels[i][j].id);
+									PlayGame.levelObjects = GetLevelMap2.getLevelObjects2(levels[i][j].id);
 								}
 
 								PlayGame.currentLevel = levels[i][j].id;
+								
 								mouseClicked = false;
+								
 								Main.playGame = true;
 								Main.drawMenu = false;
 								Main.init();
+								
 								setVisible(false);
 								isRunning = false;
+								
 								dispose();
 							}
 						} else {
@@ -274,9 +287,10 @@ public class MainMenu extends JFrame implements Runnable {
 				}
 			}
 			
-			if(mx > backR.x && mx < backR.x + backR.width && my > backR.y && my < backR.y + backR.height) {
+			if (mx > backR.x && mx < backR.x + backR.width && my > backR.y && my < backR.y + backR.height) {
 				backArrowHovering = true;
-				if(mouseClicked)  {
+				
+				if (mouseClicked)  {
 					drawLevels = false;
 					drawMenu = true;
 				}
