@@ -362,8 +362,8 @@ public class PlayGame extends JFrame implements Runnable {
 	
 	public class ML extends MouseAdapter implements MouseMotionListener {
 		public void mouseMoved(MouseEvent e) {
-			mx = e.getX();
-			my = e.getY();
+			mouseX = e.getX();
+			mouseY = e.getY();
 		}
 		
 		public void mousePressed(MouseEvent e) {
@@ -375,17 +375,17 @@ public class PlayGame extends JFrame implements Runnable {
 		@SuppressWarnings("static-access")
 		public void keyPressed(KeyEvent e) {
 			int keyCode = e.getKeyCode();
-			if(keyCode == e.VK_UP || keyCode == e.VK_W)
+			if (keyCode == e.VK_UP || keyCode == e.VK_W)
 				player.dy = -5;
-			if(keyCode == e.VK_DOWN || keyCode == e.VK_S)
+			if (keyCode == e.VK_DOWN || keyCode == e.VK_S)
 				player.dy = 5;
-			if(keyCode == e.VK_LEFT || keyCode == e.VK_A)
+			if (keyCode == e.VK_LEFT || keyCode == e.VK_A)
 				player.dx = -5;
-			if(keyCode == e.VK_RIGHT || keyCode == e.VK_D)
+			if (keyCode == e.VK_RIGHT || keyCode == e.VK_D)
 				player.dx = 5;
-			if(keyCode == e.VK_ESCAPE) 
+			if (keyCode == e.VK_ESCAPE) 
 				pause = true;
-			if(keyCode == e.VK_F5) 
+			if (keyCode == e.VK_F5) 
 				refresh = true;
 		}
 		
@@ -462,7 +462,6 @@ public class PlayGame extends JFrame implements Runnable {
 		}
 		
 		for (int i = 0; i < enemies.size(); i++) {
-			
 			// For enemies moving up or down
 			if (enemies.get(i).id == 1) {
 				enemies.get(i).y += enemies.get(i).dy;
@@ -498,22 +497,26 @@ public class PlayGame extends JFrame implements Runnable {
 				
 				if (currentEnemy.x > currentEnemy.maxX) {
 					currentEnemy.x = currentEnemy.maxX;
+					
 					currentEnemy.dx = 0;
 					currentEnemy.dy = enemySpeed;
 				} else if (currentEnemy.x < currentEnemy.minX) {
 					currentEnemy.x = currentEnemy.minX;
+					
 					currentEnemy.dx = 0;
 					currentEnemy.dy = -enemySpeed;
 				}
 				
 				if (currentEnemy.y > currentEnemy.maxY) {
 					currentEnemy.y = currentEnemy.maxY;
-					currentEnemy.dy = 0;
+
 					currentEnemy.dx = -enemySpeed;
+					currentEnemy.dy = 0;
 				} else if (currentEnemy.y < currentEnemy.minY){
 					currentEnemy.y = currentEnemy.minY;
-					currentEnemy.dy = 0;
+
 					currentEnemy.dx = enemySpeed;
+					currentEnemy.dy = 0;
 				}
 			}
 			
@@ -714,7 +717,7 @@ public class PlayGame extends JFrame implements Runnable {
 		
 		if (currentLevel < 20) {
 			PlayGame.levelMap = GetLevelMap1.getLevelMap1(currentLevel);
-			PlayGame.levelObjects = GetLevelMap1.GetLevelObjects1(currentLevel);
+			PlayGame.levelObjects = GetLevelMap1.getLevelObjects1(currentLevel);
 		} else {
 			PlayGame.levelMap = GetMapLevel2.getLevel2(currentLevel);
 			PlayGame.levelObjects = GetLevelMap2.getLevelObjects2(currentLevel);
